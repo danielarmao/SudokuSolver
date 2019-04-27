@@ -45,7 +45,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SudokuWorker\FileRead.cs" />
+    <Compile Include="SolveAlgorithm\ISudoku.cs" />
+    <Compile Include="SolveAlgorithm\SudokuSolver.cs" />
+    <Compile Include="SudokuASCII.cs" />
+    <Compile Include="SudokuData.cs" />
+    <Compile Include="SudokuFileReader.cs" />
+    <Compile Include="SudokuBlock.cs" />
+    <Compile Include="SudokuState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
