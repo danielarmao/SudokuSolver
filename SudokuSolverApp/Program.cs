@@ -11,21 +11,25 @@ namespace SudokuSolverApp
     {
         static void Main(string[] args)
         {
-            SudokuBlock sudokuBlock = new SudokuBlock();
-            SudokuState sudokuState = new SudokuState();
-            SudokuSolver sudokuSolver = new SudokuSolver(sudokuState, sudokuBlock);
-            SodokuFileReader sodokuFileReader = new SodokuFileReader();
-            SudokuASCII sudokuASCII = new SudokuASCII();
+            try {
+                SudokuBlock sudokuBlock = new SudokuBlock();
+                SudokuState sudokuState = new SudokuState();
+                SudokuSolver sudokuSolver = new SudokuSolver(sudokuState, sudokuBlock);
+                SodokuFileReader sodokuFileReader = new SodokuFileReader();
+                SudokuASCII sudokuASCII = new SudokuASCII();
 
-            
-            var file = "Sudoku.txt";
+                var file = "Sudoku.txt";
 
-            var sudokuBoard = sodokuFileReader.ReadFile(file);
+                var sudokuBoard = sodokuFileReader.ReadFile(file);
+                sudokuASCII.DisplayBoard("Unsolved Puzzle", sudokuBoard);
 
-            sudokuASCII.DisplayBoard("Unsolved Board", sudokuBoard);
-
-            bool Solve = sudokuState.SudokuSolved(sudokuBoard);
-            sudokuASCII.DisplayBoard("Solved Board", sudokuBoard);
-        }
+                bool SudokuSolved = sudokuSolver.IsSolved(sudokuBoard);
+                sudokuASCII.DisplayBoard("Solved Puzzle", sudokuBoard);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            }
     }
 }

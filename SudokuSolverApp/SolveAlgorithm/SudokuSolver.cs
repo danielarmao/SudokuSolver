@@ -1,9 +1,11 @@
 ﻿using SudokuSolverApp.SolveAlgorithm;
+using SudokuSolverApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace SudokuSolverApp.SolveAlgorithms
 {
@@ -14,34 +16,33 @@ namespace SudokuSolverApp.SolveAlgorithms
 
         public SudokuSolver(SudokuState sudokuState, SudokuBlock sudokuBlock)
         {
-            this._sudokuState = sudokuState;
-            this._sudokuBlock = sudokuBlock;
+            _sudokuState = sudokuState;
+            _sudokuBlock = sudokuBlock;
         }
 
 
         public bool IsSolved(int[,] sudokuBoard)
         {
-            List<ISudoku> algorithms = new List<ISudoku>();
+            List<ISudoku> strategies = new List<ISudoku>();
             {
                 new BruteForce(_sudokuBlock);
+               
             }
 
+            var currentState = _sudokuState.State(sudokuBoard);
+            var nextState = _sudokuState.State(strategies.FirstOrDefault().IsSolved(sudokuBoard));
 
-            string startState = _sudokuState.State(sudokuBoard); //Once file is loaded generate state
-            string finishState = _sudokuState.State(algorithms.First().Matrix(sudokuBoard)); //Next state is when the algorithm runs and the ending board is shown.
-
-            //If Sudoku board is not solved the loop will keep running otherwise print out the ending State. 
-            while (!_sudokuState.SudokuSolved(sudokuBoard) && startState !=finishState)
+            while (!_sudokuState.SudokuSolved(sudokuBoard) && currentState != nextState)
             {
-                startState = finishState;
-                for (int i = 0; i < algorithms.Count; i++)
+                currentState = nextState;
+                for (int i = 0; i < strategies.Count; i++)
                 {
-                    ISudoku a = algorithms[i];
-                    finishState = _sudokuState.State(a.Matrix(sudokuBoard));
+                    ISudoku strategy = strategies[i];
+                    nextState = _sudokuState.State(strategy.IsSolved(sudokuBoard));
                 }
             }
 
-            return _sudokuState.SudokuSolved(sudokuBoard); 
+            return _sudokuState.SudokuSolved(sudokuBoard);
         }
     }
 }

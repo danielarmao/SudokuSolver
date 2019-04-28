@@ -20,7 +20,7 @@ namespace SudokuSolverApp.SolveAlgorithm
 
 
 
-        public int[,] Matrix(int[,] sudokuBoard)
+        public int[,] IsSolved(int[,] sudokuBoard)
         {
             for (int row = 0; row < sudokuBoard.GetLength(0); row++)
             {
