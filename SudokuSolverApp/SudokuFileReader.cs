@@ -30,7 +30,7 @@ namespace SudokuSolverApp {
                     for (int j = 0; j < sudokuBoardNumbers.Length; j++)
                     {
                         string spaces = sudokuBoardNumbers[j];
-                        sudokuBoard[row, col] = spaces.Equals(" ") ? 0 : Convert.ToInt32(spaces); //Popping 0s in empty spaces.
+                        sudokuBoard[row, col] = spaces.Equals(" ") ? 0 : Convert.ToInt16(spaces); //Popping 0s in empty spaces.
                         col++;
                     }
                     row++; //when a column is complete go to the next row.

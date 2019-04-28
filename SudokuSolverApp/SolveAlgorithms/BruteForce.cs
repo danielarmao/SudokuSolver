@@ -10,14 +10,13 @@ namespace SudokuSolverApp.SolveAlgorithm
     //Class finds all possibilities for each row and column.
     class BruteForce : ISudoku
     {
-        private int[] elements = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //Initalize an array over numbers 1 to 9
         private readonly SudokuBlock _sudokuBlock;
 
         public BruteForce(SudokuBlock sudokuBlock)
         {
             _sudokuBlock = sudokuBlock;
         }
-
+        
 
 
         public int[,] IsSolved(int[,] sudokuBoard)
@@ -29,9 +28,9 @@ namespace SudokuSolverApp.SolveAlgorithm
                     if (sudokuBoard[row, col] == 0 || sudokuBoard[row, col].ToString().Length > 1)
                     {
                         //initalize our brute force strategy.
-                        var rc = GetRow_Col(sudokuBoard, row, col);
+                        var Row_Col = GetRow_Col(sudokuBoard, row, col);
                         var Block = GetBlock(sudokuBoard, row, col);
-                        sudokuBoard[row, col] = GetMatrix(rc, Block);
+                        sudokuBoard[row, col] = GetMatrix(Row_Col, Block);
 
                     }
 
@@ -42,6 +41,7 @@ namespace SudokuSolverApp.SolveAlgorithm
 
         private int GetRow_Col(int[,] sudokuBoard, int GetRow, int GetCol)
         {
+            int[] elements = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             for (int col = 0; col < 9; col++) //index by column
             {
@@ -65,6 +65,7 @@ namespace SudokuSolverApp.SolveAlgorithm
 
         private int GetBlock(int[,] sudokuBoard, int GetRow, int GetCol)
         {
+            int[] elements = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             var sudokuBlock = _sudokuBlock.Find(GetRow, GetCol); //We are calling sudokuBlock to isolate by block.
 
             for (int row = sudokuBlock.SetRow; row <= sudokuBlock.SetRow + 2; row++) //indexing by block by only going 2 over (0 -> 1-> 2)
@@ -82,14 +83,12 @@ namespace SudokuSolverApp.SolveAlgorithm
                 .Where(e => e != 0)));
         }
 
-       
 
-
-        private int GetMatrix(int rc, int Block) //put it all together
+        private int GetMatrix(int Row_Col, int Block) //put it all together
         {
-            var rcArray = rc.ToString().ToCharArray();
+            var Row_ColArray = Row_Col.ToString().ToCharArray();
             var BlockArray = Block.ToString().ToCharArray();
-            var matrixArray = rcArray.Intersect(BlockArray); //LINQ Intersect so we can put the rol/col Array and block Array together(intersected)
+            var matrixArray = Row_ColArray.Intersect(BlockArray); //LINQ Intersect so we can put the rol/col Array and block Array together(intersected)
             return Convert.ToInt32(string.Join(string.Empty, matrixArray));
         }
 

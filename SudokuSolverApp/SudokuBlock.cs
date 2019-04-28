@@ -38,11 +38,6 @@ namespace SudokuSolverApp
                 sData.SetRow = 3;
                 sData.SetCol = 0;
             }
-            else if ((Row >= 3 && Row <= 5) && (Col >= 0 && Col <= 2))
-            {
-                sData.SetRow = 3;
-                sData.SetCol = 0;
-            }
             else if ((Row >= 3 && Row <= 5) && (Col >= 3 && Col <= 5))
             {
                 sData.SetRow = 3;

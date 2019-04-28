@@ -45,9 +45,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolveAlgorithm\BruteForce.cs" />
-    <Compile Include="SolveAlgorithm\ISudoku.cs" />
-    <Compile Include="SolveAlgorithm\SudokuSolver.cs" />
+    <Compile Include="SolveAlgorithms\BruteForce.cs" />
+    <Compile Include="SolveAlgorithms\ISudoku.cs" />
+    <Compile Include="SolveAlgorithms\SudokuSolver.cs" />
     <Compile Include="SudokuASCII.cs" />
     <Compile Include="SudokuData.cs" />
     <Compile Include="SudokuFileReader.cs" />
