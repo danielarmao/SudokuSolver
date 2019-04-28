@@ -17,9 +17,11 @@ namespace SudokuSolverApp
             SodokuFileReader sodokuFileReader = new SodokuFileReader();
             SudokuASCII sudokuASCII = new SudokuASCII();
 
+            
             var file = "Sudoku.txt";
 
             var sudokuBoard = sodokuFileReader.ReadFile(file);
+
             sudokuASCII.DisplayBoard("Unsolved Board", sudokuBoard);
 
             bool Solve = sudokuState.SudokuSolved(sudokuBoard);

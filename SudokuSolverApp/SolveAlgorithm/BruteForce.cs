@@ -15,21 +15,16 @@ namespace SudokuSolverApp.SolveAlgorithm
 
         public BruteForce(SudokuBlock sudokuBlock)
         {
-            this._sudokuBlock = sudokuBlock;
+            _sudokuBlock = sudokuBlock;
         }
 
 
 
-        int[,] ISudoku.Matrix(int[,] sudokuBoard)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int[,] SudokuSolved(int[,] sudokuBoard)
+        public int[,] Matrix(int[,] sudokuBoard)
         {
             for (int row = 0; row < sudokuBoard.GetLength(0); row++)
             {
-                for (int col = 0; row < sudokuBoard.GetLength(1); col++)
+                for (int col = 0; col < sudokuBoard.GetLength(1); col++)
                 {
                     if (sudokuBoard[row, col] == 0 || sudokuBoard[row, col].ToString().Length > 1)
                     {
@@ -47,7 +42,6 @@ namespace SudokuSolverApp.SolveAlgorithm
 
         private int GetRow_Col(int[,] sudokuBoard, int GetRow, int GetCol)
         {
-
 
             for (int col = 0; col < 9; col++) //index by column
             {
@@ -71,7 +65,7 @@ namespace SudokuSolverApp.SolveAlgorithm
 
         private int GetBlock(int[,] sudokuBoard, int GetRow, int GetCol)
         {
-            SudokuData sudokuBlock = _sudokuBlock.Find(GetRow, GetCol); //We are calling sudokuBlock to isolate by block.
+            var sudokuBlock = _sudokuBlock.Find(GetRow, GetCol); //We are calling sudokuBlock to isolate by block.
 
             for (int row = sudokuBlock.SetRow; row <= sudokuBlock.SetRow + 2; row++) //indexing by block by only going 2 over (0 -> 1-> 2)
             {
@@ -101,8 +95,9 @@ namespace SudokuSolverApp.SolveAlgorithm
 
         private bool ValidAnswer(int v)
         {
-            return v != 0 && v.ToString().Length < 2; //A Valid Single goes by these conditions
+            return v != 0 && v.ToString().Length == 1; //A Valid Single goes by these conditions
         }
+
 
     }
 }
