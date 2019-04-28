@@ -10,10 +10,8 @@ namespace SudokuSolverApp
     {
         public void DisplayBoard(string title, int [,] sudokuBoard)
         {
-            if (!title.Equals(string.Empty))
-            {
-                Console.WriteLine("{0} {1}", title, "\n");
-            }
+                Console.WriteLine();
+                Console.WriteLine("{0}{1}", title, "\n");
 
             for (int row=0; row < sudokuBoard.GetLength(0); row++) //Grab the first dimension of a 2D Array.
             {
@@ -22,9 +20,10 @@ namespace SudokuSolverApp
                 {
                     Console.Write("{0}{1}", sudokuBoard[row, col], "|"); //Creating the board
                 }
-                Console.WriteLine();
+                
             }
             Console.WriteLine();
         }
+
     }
 }

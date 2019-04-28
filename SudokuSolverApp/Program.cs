@@ -11,7 +11,7 @@ namespace SudokuSolverApp
     {
         static void Main(string[] args)
         {
-            try
+
             {
                 SudokuBlock sudokuBlock = new SudokuBlock();
                 SudokuState sudokuState = new SudokuState();
@@ -20,18 +20,15 @@ namespace SudokuSolverApp
                 SudokuASCII sudokuASCII = new SudokuASCII();
 
                 string file = "Sudoku.txt";
-
                 
                 var sudokuBoard = sodokuFileReader.ReadFile(file);
-                sudokuASCII.DisplayBoard("Unsolved Puzzle", sudokuBoard);
+                sudokuASCII.DisplayBoard ("Unsolved Board",sudokuBoard);
 
                 bool SudokuSolved = sudokuSolver.IsSolved(sudokuBoard);
-                sudokuASCII.DisplayBoard("Solved Puzzle", sudokuBoard);
+                sudokuASCII.DisplayBoard("Solved Board",sudokuBoard);
+
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
         }
     }
 }

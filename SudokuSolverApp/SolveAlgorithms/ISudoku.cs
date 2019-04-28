@@ -8,6 +8,6 @@ namespace SudokuSolverApp.SolveAlgorithms
 {
     interface ISudoku
     {
-        int[,] IsSolved(int[,] sudokuBoard); 
+        int[,] IsSolved(int[,] sudokuBoard);  
     }
 }

@@ -26,6 +26,7 @@ namespace SudokuSolverApp.SolveAlgorithms
             List<ISudoku> algorithms = new List<ISudoku>()
             {
                 new BruteForce(_sudokuBlock),
+                //additional algorithms can be submitted here. (Demonstrates the interface.)
 
             };
 
@@ -45,5 +46,7 @@ namespace SudokuSolverApp.SolveAlgorithms
 
             return _sudokuState.SudokuSolved(sudokuBoard); 
         }
+
+        ~SudokuSolver() { }
     }
 }

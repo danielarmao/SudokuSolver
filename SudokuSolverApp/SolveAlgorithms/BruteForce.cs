@@ -12,6 +12,7 @@ namespace SudokuSolverApp.SolveAlgorithm
     {
         private readonly SudokuBlock _sudokuBlock;
 
+
         public BruteForce(SudokuBlock sudokuBlock)
         {
             _sudokuBlock = sudokuBlock;
@@ -97,6 +98,7 @@ namespace SudokuSolverApp.SolveAlgorithm
             return v != 0 && v.ToString().Length == 1; //A Valid Single goes by these conditions
         }
 
+        ~BruteForce() {}
 
     }
 }
