@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SudokuSolverApp.SolveAlgorithm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,21 +23,21 @@ namespace SudokuSolverApp.SolveAlgorithms
         {
             List<ISudoku> algorithms = new List<ISudoku>();
             {
+                new BruteForce(_sudokuBlock);
+            }
 
-            };
-            
 
-            string currentState = _sudokuState.State(sudokuBoard); //Once file is loaded generate state
-            string nextState = _sudokuState.State(algorithms.First().Matrix(sudokuBoard)); //Next state is when the algorithm runs and the ending board is shown.
+            string startState = _sudokuState.State(sudokuBoard); //Once file is loaded generate state
+            string finishState = _sudokuState.State(algorithms.First().Matrix(sudokuBoard)); //Next state is when the algorithm runs and the ending board is shown.
 
             //If Sudoku board is not solved the loop will keep running otherwise print out the ending State. 
-            while (!_sudokuState.SudokuSolved(sudokuBoard) && currentState !=nextState)
+            while (!_sudokuState.SudokuSolved(sudokuBoard) && startState !=finishState)
             {
-                currentState = nextState;
+                startState = finishState;
                 for (int i = 0; i < algorithms.Count; i++)
                 {
                     ISudoku a = algorithms[i];
-                    nextState = _sudokuState.State(a.Matrix(sudokuBoard));
+                    finishState = _sudokuState.State(a.Matrix(sudokuBoard));
                 }
             }
 

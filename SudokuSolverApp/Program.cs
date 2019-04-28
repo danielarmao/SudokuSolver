@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SudokuSolverApp.SolveAlgorithms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,19 @@ namespace SudokuSolverApp
     {
         static void Main(string[] args)
         {
+            SudokuBlock sudokuBlock = new SudokuBlock();
+            SudokuState sudokuState = new SudokuState();
+            SudokuSolver sudokuSolver = new SudokuSolver(sudokuState, sudokuBlock);
+            SodokuFileReader sodokuFileReader = new SodokuFileReader();
+            SudokuASCII sudokuASCII = new SudokuASCII();
+
+            var file = "Sudoku.txt";
+
+            var sudokuBoard = sodokuFileReader.ReadFile(file);
+            sudokuASCII.DisplayBoard("Unsolved Board", sudokuBoard);
+
+            bool Solve = sudokuState.SudokuSolved(sudokuBoard);
+            sudokuASCII.DisplayBoard("Solved Board", sudokuBoard);
         }
     }
 }
